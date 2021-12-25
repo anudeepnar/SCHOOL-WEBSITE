@@ -1,0 +1,15 @@
+{% extends 'curriculum/base.html' %}
+
+{% block title %} Delete Lesson {% endblock title %}
+
+{% block content %}
+
+<form method='POST'>
+{% csrf_token %}
+<button type="submit" value="submit">Delete</button>
+<a href="{% url 'curriculum:lesson_detail' slug=lessons.slug subject=lessons.subject.slug standard=lessons.standard.slug %}">Cancel Delete</a>
+</form>
+
+{% endblock content %}
+
+<str:standard>/<str:subject>/<slug:slug>

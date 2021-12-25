@@ -1,0 +1,17 @@
+
+{% extends "curriculum/base.html" %}
+{% load crispy_forms_tags %}   
+
+{% block title %}Logout{% endblock title %}
+
+{% block content %}
+
+<h2>You have been Logged out</h2> 
+        <div class="border-top pt-3">
+            <small class="text-muted">
+               <a class="ml-2" href="{% url 'users:signin' %}">Log In Again</a>  
+            </small>      
+        </div>
+
+
+{% endblock content %}

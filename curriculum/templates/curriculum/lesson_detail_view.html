@@ -1,0 +1,33 @@
+{% extends 'curriculum/base.html' %}
+
+{% block title %}Lessons{% endblock title %}
+
+{% block content %} 
+   <p>Created on {{ lessons.created_at }} by {{ lessons.created_by }}</p> <br>
+<div>Chapter {{ lessons.chapter_no }}:  {{ lessons.name }}</div>
+{% comment %} <div>Video {{ lessons.video.url }}</div> {% endcomment %}
+
+ {% comment %} To not to get error: The 'video' or 'notes' or 'ppt' attribute has no file associated with it. {% endcomment %}
+{% if lessons.notes %}
+<div>Notes: {{ lessons.notes.url }}</div>
+{% else %}
+<p>Notes: No notes attached to it</p>
+{% endif %}
+
+{% if lessons.ppt %}
+<div>ppt: {{ lessons.ppt.url }}</div>
+{% else %}
+<p>ppt: No ppt attached to it</p>
+{% endif %}
+
+
+{% if lessons.video %}
+<div>video: {{ lessons.video.url }}</div>
+{% else %}
+<p>video: No video attached to it</p>
+{% endif %}
+
+
+<a href="{% url 'curriculum:lesson_update' slug=lessons.slug subject=lessons.subject.slug standard=lessons.standard.slug %}">Update Lesson</a>
+<a href="{% url 'curriculum:lesson_delete' slug=lessons.slug subject=lessons.subject.slug standard=lessons.standard.slug %}">Delete Lesson</a>
+{% endblock content %}

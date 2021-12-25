@@ -1,0 +1,18 @@
+{% extends 'curriculum/base.html' %}
+{% load static %}
+{% block title %}Lessons{% endblock title %}
+
+{% block content %}
+{% comment %} subjects.lessons.all = subjects in the context_object_name of Model Subject ,lessons is the related name in Lesson Model {% endcomment %}
+{% for lesson in subjects.lessons.all %}
+
+<a class="text_color_green" href="{% url 'curriculum:lesson_detail' slug=lesson.slug subject=subjects.slug standard=lesson.standard.slug %}">Chapter {{ lesson.chapter_no }}: {{ lesson.name }}</a> <br>
+
+{% endfor %}
+{% if user.is_superuser %}
+{% comment %} standard=subjects.standard.slug: Here inside Subject(context_name=subjects) we have standard object, using that 'standard' we are accessing its slug which is in Standard Model {% endcomment %}
+<button class="btn btn-primary m-2" href="{% url 'curriculum:lesson_create' slug=subjects.slug standard=subjects.standard.slug %}"> Create Lesson </button >
+{% endif %}
+{% endblock content %}
+
+

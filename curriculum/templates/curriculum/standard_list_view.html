@@ -1,0 +1,92 @@
+{% extends 'curriculum/base.html' %}
+{% load static %}
+{% block title %}Standards {% endblock title %}
+
+{% block content %}
+
+ 
+<div class="row text-center mt-1">
+	{% for standard in standards %}
+	<div class="col-md-4 ">
+		<figure class="card card-product-grid border border-info">
+			<div class="img-wrap"> 
+				<a href="{% url 'curriculum:subject' slug=standard.slug %}"><img class="rounded mx-auto d-block" width="280" height="180" src="{{ standard.image.url }}"></a>
+			</div> <!-- img-wrap.// -->
+			<figcaption class="info-wrap">
+				<div class="fix-height">
+					<a href="{% url 'curriculum:subject' slug=standard.slug %}" class="title text_color_green ">{{ standard.name }}</a> 
+					<p class="card-text">{{ standard.description|truncatechars:40 }}</p>
+				</div>
+				    <a href="{% url 'curriculum:subject' slug=standard.slug %}" class="btn btn-primary m-2">{{ standard.name }} Lessons</a>
+			</figcaption>
+		</figure>
+	</div> <!-- col.// -->
+{% endfor %}
+</div> <!-- row end.// --> 
+
+
+
+
+{% comment %} <div class="container ">
+
+<div class="card " style="width: 18rem;">
+{% for standard in object_list %}
+<a href="">{{ standard.name }}</a><br>
+<img src="{{ standard.image.urls }}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{ standard.name }}</h5>
+    <p class="card-text">{{ standard.description }}</p>
+    <a href="#" class="btn btn-primary">{{ standard.name }} Lessons</a>
+  </div>
+{% endfor %}
+</div>
+
+</div> {% endcomment %}
+
+{% comment %} main {% endcomment %}
+ {% comment %} <div class="row">
+	{% for standard in standards %}
+	<div class="col-md-3">
+		<div class="card card-product-grid">
+			<a href="" class="img-wrap"> <img src="{{ standard.image.url }}"> </a>
+			<figcaption class="info-wrap">
+				<a href="" class="title">{{ standard.name }}</a>
+                <p class="card-text">{{ standard.description }}</p>
+                <a href="{% url 'curriculum:subject' slug=standard.slug %}" class="btn btn-primary">{{ standard.name }} Lessons</a>
+				
+			</figcaption>
+		</div>
+	</div> <!-- col.// -->
+	{% endfor %}
+</div> <!-- row.// -->    {% endcomment %}
+
+
+
+
+{% endblock content %}
+
+{% comment %} <div class="card" style="width: 18rem;">
+  <img src="..." class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div> {% endcomment %}
+
+
+{% comment %} 	
+ <div class="row">
+	{% for product in products %}
+	<div class="col-md-3">
+		<div class="card card-product-grid">
+			<a href="{{ product.get_url }}" class="img-wrap"> <img src="{{ product.image.url }}"> </a>
+			<figcaption class="info-wrap">
+				<a href="{{ product.get_url }}" class="title">{{ product.product_name }}</a>
+				<div class="price mt-1">${{ product.price }}</div> <!-- price-wrap.// -->
+			</figcaption>
+		</div>
+	</div> <!-- col.// -->
+	{% endfor %}
+</div> <!-- row.// -->   {% endcomment %}
+

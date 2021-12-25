@@ -1,0 +1,17 @@
+{% extends 'curriculum/base.html' %}
+{% load static %}
+{% block title %}Subjects{% endblock title %}
+
+{% block content %}
+
+{% comment %} itirate into every subjects in specific standard using "subjects.all", subjects is the name name given as related name in subject model {% endcomment %}
+<p>Class Information: {{ standards.description }}</p>
+{% for subject in standards.subjects.all %}
+
+{% comment %} slug=subject.slug:- subject is the name given above in for loop {% endcomment %}
+<a class="text_color_green" href="{% url 'curriculum:lesson' slug=subject.slug standard=standards.slug %}" >{{ subject.name }}</a> 
+<p>{{subject.description}}</p>
+</br>
+{% endfor %}
+
+{% endblock content %}
